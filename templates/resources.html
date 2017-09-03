@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<script src="/static/js/resources.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<h4>{{ resources[0].subject }} - {{ resources[0].topic }}</h4>
+
+Only show courses with:
+<div class="checkbox">
+  <input type="checkbox" id="lecturenotes">Lecture Notes
+  <input type="checkbox" id="lecturevideos">Lecture Videos
+  <input type="checkbox" id="assignments">Assignments
+  <input type="checkbox" id="book">Book
+</div>
+
+<table id="table" class="display">
+  <thead>
+    <tr>
+      <th>Name</th><th>Link</th><th>Instructor</th><th>College</th>
+      <th>Lecture Notes</th><th>Lecture Videos</th><th>Assignments</th>
+      <th>Book</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in resources %}
+      <tr>
+        <td>{{ r.name }}</td>
+        <td><a href="{{ r.link }}" target="_blank">Go to course</a></td>
+        <td>{{ r.instructor }}</td>
+        <td>{{ r.college }}</td>
+        <td>
+          {% if r.lecture_notes %}
+            &#x2713
+          {% endif %}
+        </td>
+        <td>
+          {% if r.videos %}
+            &#x2713
+          {% endif %}
+        </td>
+        <td>
+          {% if r.assignments %}
+            &#x2713
+          {% endif %}
+        </td>
+        <td>
+          {% if r.book %}
+            &#x2713
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
