@@ -10,6 +10,11 @@ function setFilter(columnID, checked) {
 }
 
 $(function() {
+  $('[title!=""]').qtip({ position : {
+    my: "bottom left",
+    at : "top right"
+  }});
+
   $("#table").DataTable();
   var checkmark = '\u2713' // the unicode code for the checkmark
 

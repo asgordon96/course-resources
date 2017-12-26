@@ -14,9 +14,10 @@ class Resource(db.Model):
     videos = db.Column(db.Boolean)
     assignments = db.Column(db.Boolean)
     book = db.Column(db.Boolean)
+    description = db.Column(db.Text)
 
     def __init__(self, subject, topic, name, link, instructor, college,
-                 lecture_notes, videos, assignments, book):
+                 lecture_notes, videos, assignments, book, description):
         self.subject = subject
         self.topic = topic
         self.name = name
@@ -27,6 +28,7 @@ class Resource(db.Model):
         self.videos = videos
         self.assignments = assignments
         self.book = book
+        self.description = description
 
 # get all of the subjects in the database
 def get_subjects():

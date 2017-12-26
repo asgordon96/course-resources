@@ -1,6 +1,8 @@
 {% extends "layout.html" %}
 
 {% block head %}
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/qtip2/3.0.3/jquery.qtip.min.css"></link>
+<script src="//cdn.jsdelivr.net/qtip2/3.0.3/jquery.qtip.min.js"></script>
 <script src="/static/js/resources.js"></script>
 {% endblock %}
 
@@ -19,7 +21,7 @@ Only show courses with:
 <table id="table" class="display">
   <thead>
     <tr>
-      <th>Name</th><th>Link</th><th>Instructor</th><th>College</th>
+      <th>Name and Link</th><th>Instructor</th><th>College</th>
       <th>Lecture Notes</th><th>Lecture Videos</th><th>Assignments</th>
       <th>Book</th>
     </tr>
@@ -27,8 +29,7 @@ Only show courses with:
   <tbody>
     {% for r in resources %}
       <tr>
-        <td>{{ r.name }}</td>
-        <td><a href="{{ r.link }}" target="_blank">Go to course</a></td>
+        <td><a href="{{ r.link }}" target="_blank" title="{{ r.description }}">{{ r.name }}</a></td>
         <td>{{ r.instructor }}</td>
         <td>{{ r.college }}</td>
         <td>

@@ -1,23 +1,23 @@
 {% extends "layout.html" %}
 
 {% block head %}
-<link rel="stylesheet" href="/static/vendor/css/jquery-editable-select.css"></link>
-<script src="/static/vendor/js/jquery-editable-select.js"></script>
+<!-- <link rel="stylesheet" href="/static/vendor/css/jquery-editable-select.css"></link> -->
+<!-- <script src="/static/vendor/js/jquery-editable-select.js"></script> -->
 <script src="/static/js/index.js"></script>
 {% endblock %}
 
 {% block content %}
 <span>Search by subject</span>
-<select id="subjects">
+<select id="subjects" onchange="select_subject()">
   {% for subject in subjects %}
     <option>{{ subject }}</option>
   {% endfor %}
 </select>
 
-<button id="search">Search</button>
+<!-- <button id="search">Search</button> -->
+
+<h4 id="subject-heading"></h4>
 
 <div id="topics"></div>
-
-<input type="hidden" id="subjecthidden" value="">
 
 {% endblock %}

@@ -5,19 +5,28 @@ import sys
 from main import app, db
 from models import Resource
 
-def add_from_csv(csv_file):
-    f = open(csv_file, 'r')
+def add_from_csv(txt_file):
+    f = open(txt_file, 'r')
     content = f.readlines()
     f.close()
-    # read each line in the csv file and add the a resource for that line
+
+    print len(content)
+
+    # read each line in the tab-separated txt file and add the a resource for that line
     for line in content:
-        line = line.strip().split(",")
+        line = line.strip().split('\t')
+
+        if line[10]:
+            description = line[10]
+        else:
+            description = "No description available"
+
         resource = Resource(subject=line[0], topic=line[1], name=line[2],
                             link=line[3], instructor=line[4], college=line[5],
                             lecture_notes=line[6] == "TRUE",
                             videos=line[7] == "TRUE",
                             assignments=line[8] == "TRUE",
-                            book=line[9] == "TRUE")
+                            book=line[9] == "TRUE", description=description)
 
         db.session.add(resource)
 
